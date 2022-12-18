@@ -30,3 +30,11 @@
 *.exe
 *.out
 *.app
+
+# vs stuff
+Builds/
+JuceLibraryCode/
+
+# reaper stuff
+*.rpp
+*.rpp-bak
