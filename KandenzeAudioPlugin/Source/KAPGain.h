@@ -9,3 +9,15 @@
 */
 
 #pragma once
+
+class KAPGain
+{
+public:
+
+    KAPGain();
+    ~KAPGain();
+
+    void process(float* inAudio, float inGain, float* outAudio, int inNumSamplesToRender);
+private:
+
+};

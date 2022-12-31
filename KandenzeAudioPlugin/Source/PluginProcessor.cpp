@@ -152,9 +152,9 @@ void KandenzeAudioPluginAudioProcessor::processBlock (juce::AudioBuffer<float>& 
     // interleaved by keeping the same state.
     for (int channel = 0; channel < totalNumInputChannels; ++channel)
     {
-        auto* channelData = buffer.getWritePointer (channel);
+        float* channelData = buffer.getWritePointer (channel);
 
-        // ..do something to the data...
+        mGain[channel]->process(channelData, 0.5f, channelData, buffer.getNumSamples());
     }
 }
 
@@ -181,6 +181,14 @@ void KandenzeAudioPluginAudioProcessor::setStateInformation (const void* data, i
 {
     // You should use this method to restore your parameters from this memory block,
     // whose contents will have been created by the getStateInformation() call.
+}
+
+void KandenzeAudioPluginAudioProcessor::initializeDSP()
+{
+    for (int i = 0; i < 2; i++)
+    {
+        mGain[i] = std::make_unique<KAPGain>();
+    }
 }
 
 //==============================================================================
