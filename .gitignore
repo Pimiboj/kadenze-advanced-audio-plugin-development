@@ -36,5 +36,4 @@ Builds/
 JuceLibraryCode/
 
 # reaper stuff
-*.rpp
-*.rpp-bak
+KandenzeAudioPlugin/Reaper Files/
