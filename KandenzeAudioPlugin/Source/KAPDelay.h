@@ -10,7 +10,7 @@
 
 #pragma once
 
-const int maxBufferDelaySize = 192000;
+#include "KAPAudioHelpers.h"
 
 class KAPDelay
 {
@@ -20,7 +20,7 @@ public:
 
     void SetSampleRate(double inSampleRate);
     void Reset();
-    void Process(float* inAudio, float inTime, float inFeedback, float inWetDry, float* outAudio, int inNumSamplesToRender);
+    void Process(float* inAudio, float inTime, float inFeedback, float inWetDry, float* inModulationBuffer, float* outAudio, int inNumSamplesToRender);
 
 private:
     /* Circular Buffer components */
@@ -29,6 +29,8 @@ private:
     double mSampleRate;
     double mBuffer[maxBufferDelaySize];
     double mFeedbackSample;
+
+    float mTimeSmoothed;
 
     int mDelayIndex;
 };

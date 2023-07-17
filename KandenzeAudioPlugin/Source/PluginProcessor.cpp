@@ -97,6 +97,7 @@ void KandenzeAudioPluginAudioProcessor::prepareToPlay (double sampleRate, int sa
     for (int i = 0; i < 2; i++)
     {
         mDelay[i]->SetSampleRate(sampleRate);
+        mLFO[i]->SetSampleRate(sampleRate);
     }
 }
 
@@ -105,6 +106,7 @@ void KandenzeAudioPluginAudioProcessor::releaseResources()
     for (int i = 0; i < 2; i++)
     {
         mDelay[i]->Reset();
+        mLFO[i]->Reset();
     }
 }
 
@@ -160,7 +162,12 @@ void KandenzeAudioPluginAudioProcessor::processBlock (juce::AudioBuffer<float>& 
         float* channelData = buffer.getWritePointer (channel);
 
         mGain[channel]->process(channelData, 0.5f, channelData, buffer.getNumSamples());
-        mDelay[channel]->Process(channelData, 0.25f, 0.5f, 0.35f, channelData, buffer.getNumSamples());
+
+        float rate = (channel == 0) ? 0 : 0.25f;
+
+        mLFO[channel]->Process(rate, 0.5f, buffer.getNumSamples());
+
+        mDelay[channel]->Process(channelData, 0.25f, 0.5f, 1.0f, mLFO[channel]->GetBuffer(), channelData, buffer.getNumSamples());
     }
 }
 
@@ -195,6 +202,7 @@ void KandenzeAudioPluginAudioProcessor::initializeDSP()
     {
         mGain[i] = std::make_unique<KAPGain>();
         mDelay[i] = std::make_unique<KAPDelay>();
+        mLFO[i] = std::make_unique<KAPLfo>();
     }
 }
 
