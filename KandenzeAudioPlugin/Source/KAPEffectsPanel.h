@@ -12,6 +12,8 @@
 
 #include "KAPPanelBase.h"
 
+#include "KAPParameterSlider.h"
+
 enum KAPEffectsPanelStyle
 {
     kDelay,
@@ -31,4 +33,6 @@ public:
 
 private:
     KAPEffectsPanelStyle mStyle;
+
+    std::vector<std::unique_ptr<KAPParameterSlider>> mSliders;
 };

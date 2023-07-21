@@ -10,6 +10,8 @@
 
 #include "KAPGainPanel.h"
 
+#include "KAPParameters.h"
+
 KAPGainPanel::KAPGainPanel(KandenzeAudioPluginAudioProcessor* inProcessor)
     : KAPPanelBase(inProcessor)
 {
@@ -19,4 +21,12 @@ KAPGainPanel::KAPGainPanel(KandenzeAudioPluginAudioProcessor* inProcessor)
 KAPGainPanel::~KAPGainPanel()
 {
 
+}
+
+void KAPGainPanel::SetParameterID(int inParameterID)
+{
+    mSlider = std::make_unique<KAPParameterSlider>(mProcessor->Parameters, KAPParameterID[inParameterID]);
+    const int sliderSize = 54;
+    mSlider->setBounds((getWidth() - sliderSize) * 0.5f, (getHeight() - sliderSize) * 0.5f, sliderSize, sliderSize);
+    addAndMakeVisible(*mSlider);
 }

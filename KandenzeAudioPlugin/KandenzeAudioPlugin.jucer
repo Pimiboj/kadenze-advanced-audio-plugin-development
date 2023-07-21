@@ -4,6 +4,16 @@
               useAppConfig="0" addUsingNamespaceToJuceHeader="0" displaySplashScreen="1"
               jucerFormatVersion="1">
   <MAINGROUP id="dMZX4P" name="KandenzeAudioPlugin">
+    <GROUP id="{2298F062-0B85-33A8-DF40-1D6D4D91FF57}" name="Parameter Control">
+      <FILE id="LSPBpc" name="KAPParameterComboBox.cpp" compile="1" resource="0"
+            file="Source/KAPParameterComboBox.cpp"/>
+      <FILE id="ISn8hW" name="KAPParameterComboBox.h" compile="0" resource="0"
+            file="Source/KAPParameterComboBox.h"/>
+      <FILE id="Wa3vo3" name="KAPParameterSlider.cpp" compile="1" resource="0"
+            file="Source/KAPParameterSlider.cpp"/>
+      <FILE id="FG38qT" name="KAPParameterSlider.h" compile="0" resource="0"
+            file="Source/KAPParameterSlider.h"/>
+    </GROUP>
     <GROUP id="{8E2B53E3-CA30-FB6F-48A9-3BC1BF0B0F47}" name="Panels">
       <FILE id="hovvjy" name="KAPCenterPanel.cpp" compile="1" resource="0"
             file="Source/KAPCenterPanel.cpp"/>
@@ -34,6 +44,7 @@
             file="Source/KAPAudioHelpers.h"/>
       <FILE id="JJB4sI" name="KAPInterfaceDefines.h" compile="0" resource="0"
             file="Source/KAPInterfaceDefines.h"/>
+      <FILE id="H3STEa" name="KAPParameters.h" compile="0" resource="0" file="Source/KAPParameters.h"/>
     </GROUP>
     <GROUP id="{C1FA48DC-E011-A316-B368-578520960625}" name="DSP">
       <FILE id="FuAk5W" name="KAPDelay.cpp" compile="1" resource="0" file="Source/KAPDelay.cpp"/>

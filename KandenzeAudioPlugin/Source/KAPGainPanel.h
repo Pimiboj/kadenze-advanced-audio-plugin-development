@@ -11,6 +11,7 @@
 #pragma once
 
 #include "KAPPanelBase.h"
+#include "KAPParameterSlider.h"
 
 class KAPGainPanel : public KAPPanelBase
 {
@@ -18,6 +19,8 @@ public:
     KAPGainPanel(KandenzeAudioPluginAudioProcessor* inProcessor);
     ~KAPGainPanel();
 
-private:
+    void SetParameterID(int inParameterID);
 
+private:
+    std::unique_ptr<KAPParameterSlider> mSlider;
 };

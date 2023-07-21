@@ -57,12 +57,17 @@ public:
     void getStateInformation (juce::MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
 
+    juce::AudioProcessorValueTreeState Parameters;
+
 private:
 
     /** Internal **/
+    void initializeParameters();
     void initializeDSP();
+    juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
 
-    std::unique_ptr<KAPGain> mGain[2];
+    std::unique_ptr<KAPGain> mInputGain[2];
+    std::unique_ptr<KAPGain> mOutputGain[2];
     std::unique_ptr<KAPDelay> mDelay[2];
     std::unique_ptr<KAPLfo> mLFO[2];
 
