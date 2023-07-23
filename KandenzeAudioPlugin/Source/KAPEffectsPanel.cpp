@@ -11,6 +11,7 @@
 #include "KAPEffectsPanel.h"
 
 #include "KAPParameters.h"
+#include "KAPHelperFunctions.h"
 
 KAPEffectsPanel::KAPEffectsPanel(KandenzeAudioPluginAudioProcessor* inProcessor)
     : KAPPanelBase(inProcessor)
@@ -44,6 +45,11 @@ void KAPEffectsPanel::paint(juce::Graphics& g)
         g.drawFittedText("NO NO NO", 0, 0, getWidth(), getHeight(), juce::Justification::centred, 1);
         jassertfalse;
         break;
+    }
+
+    for (int i = 0; i < mSliders.size(); i++)
+    {
+        paintComponentLabel(g, &*mSliders.at(i));
     }
 }
 
