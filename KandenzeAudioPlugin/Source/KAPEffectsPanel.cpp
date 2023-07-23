@@ -54,7 +54,7 @@ void KAPEffectsPanel::setEffectsPanelStyle(KAPEffectsPanelStyle inStyle)
     mSliders.clear();
 
     const int sliderSize = 56;
-    int x = 130;
+    int x = ((EFFECTS_PANEL_WIDTH - sliderSize) / 2) - (2 * sliderSize);
     int y = (getHeight() - sliderSize) * 0.5f;
 
     switch (mStyle)
