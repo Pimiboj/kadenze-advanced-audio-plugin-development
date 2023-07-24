@@ -21,7 +21,7 @@ enum KAPEffectsPanelStyle
     kTotalNumStyles
 };
 
-class KAPEffectsPanel : public KAPPanelBase
+class KAPEffectsPanel : public KAPPanelBase, public juce::ComboBox::Listener
 {
 public:
     KAPEffectsPanel(KandenzeAudioPluginAudioProcessor* inProcessor);
@@ -30,6 +30,8 @@ public:
     void paint(juce::Graphics& g) override;
 
     void setEffectsPanelStyle(KAPEffectsPanelStyle inStyle);
+
+    void comboBoxChanged(juce::ComboBox* comboBoxThatHasChanged) override;
 
 private:
     KAPEffectsPanelStyle mStyle;

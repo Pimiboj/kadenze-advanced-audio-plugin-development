@@ -178,6 +178,7 @@ void KandenzeAudioPluginAudioProcessor::processBlock (juce::AudioBuffer<float>& 
             getParameter(KAPParameter::kDelayTime),
             getParameter(KAPParameter::kDelayFeedback),
             getParameter(KAPParameter::kDelayWetDry),
+            getParameter(KAPParameter::kDelayType),
             mLFO[channel]->GetBuffer(),
             channelData,
             buffer.getNumSamples());

@@ -12,6 +12,12 @@
 
 #include "KAPAudioHelpers.h"
 
+enum KAPDelayType
+{
+    KAPDelayType_Delay,
+    KAPDelayType_Chorus
+};
+
 class KAPDelay
 {
 public:
@@ -20,7 +26,7 @@ public:
 
     void SetSampleRate(double inSampleRate);
     void Reset();
-    void Process(float* inAudio, float inTime, float inFeedback, float inWetDry, float* inModulationBuffer, float* outAudio, int inNumSamplesToRender);
+    void Process(float* inAudio, float inTime, float inFeedback, float inWetDry, float inType, float* inModulationBuffer, float* outAudio, int inNumSamplesToRender);
 
 private:
     /* Circular Buffer components */

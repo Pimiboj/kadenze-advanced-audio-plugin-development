@@ -11,6 +11,7 @@
 #include "KAPGainPanel.h"
 
 #include "KAPParameters.h"
+#include "KAPHelperFunctions.h"
 
 KAPGainPanel::KAPGainPanel(KandenzeAudioPluginAudioProcessor* inProcessor)
     : KAPPanelBase(inProcessor)
@@ -21,6 +22,16 @@ KAPGainPanel::KAPGainPanel(KandenzeAudioPluginAudioProcessor* inProcessor)
 KAPGainPanel::~KAPGainPanel()
 {
 
+}
+
+void KAPGainPanel::paint(juce::Graphics& g)
+{
+    KAPPanelBase::paint(g);
+
+    if (mSlider)
+    {
+        paintComponentLabel(g, &*mSlider);
+    }
 }
 
 void KAPGainPanel::SetParameterID(int inParameterID)

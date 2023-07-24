@@ -17,7 +17,8 @@ KAPEffectsPanel::KAPEffectsPanel(KandenzeAudioPluginAudioProcessor* inProcessor)
     : KAPPanelBase(inProcessor)
 {
     setSize(EFFECTS_PANEL_WIDTH, EFFECTS_PANEL_HEIGHT);
-    setEffectsPanelStyle(kChorus);
+    KAPEffectsPanelStyle currentStyle = (KAPEffectsPanelStyle)(int)mProcessor->getParameter(kDelayType);
+    setEffectsPanelStyle(currentStyle);
 }
 
 KAPEffectsPanel::~KAPEffectsPanel()
@@ -112,4 +113,13 @@ void KAPEffectsPanel::setEffectsPanelStyle(KAPEffectsPanelStyle inStyle)
         jassertfalse;
     }   break;
     }
+
+    repaint();
+}
+
+void KAPEffectsPanel::comboBoxChanged(juce::ComboBox* comboBoxThatHasChanged)
+{
+    KAPEffectsPanelStyle style = (KAPEffectsPanelStyle) comboBoxThatHasChanged->getSelectedItemIndex();
+
+    setEffectsPanelStyle(style);
 }

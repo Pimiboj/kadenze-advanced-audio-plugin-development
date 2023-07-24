@@ -35,7 +35,14 @@ void KAPDelay::Reset()
     juce::zeromem(mBuffer, sizeof(mBuffer));
 }
 
-void KAPDelay::Process(float* inAudio, float inTime, float inFeedback, float inWetDry, float* inModulationBuffer, float* outAudio, int inNumSamplesToRender)
+void KAPDelay::Process(float* inAudio,
+    float inTime,
+    float inFeedback,
+    float inWetDry,
+    float inType,
+    float* inModulationBuffer,
+    float* outAudio,
+    int inNumSamplesToRender)
 {
     const float wet = inWetDry;
     const float dry = 1.0f - wet;
@@ -43,9 +50,16 @@ void KAPDelay::Process(float* inAudio, float inTime, float inFeedback, float inW
 
     for (int i = 0; i < inNumSamplesToRender; i++)
     {
-        const double delayTimeModulation = (inTime + (0.002 * inModulationBuffer[i]));
 
-        mTimeSmoothed = mTimeSmoothed - kParameterSmoothingCoeff_Fine * (mTimeSmoothed - delayTimeModulation);
+        if ((int)inType == KAPDelayType_Delay)
+        {
+            mTimeSmoothed = mTimeSmoothed - kParameterSmoothingCoeff_Fine * (mTimeSmoothed - inTime);
+        }
+        else
+        {
+            const double delayTimeModulation = (0.003 + (0.002 * inModulationBuffer[i]));
+            mTimeSmoothed = mTimeSmoothed - kParameterSmoothingCoeff_Fine * (mTimeSmoothed - delayTimeModulation);
+        }
 
         const double delayTimeInSamples = (mTimeSmoothed * mSampleRate);
         const double sample = getInterpolatedSample(delayTimeInSamples);

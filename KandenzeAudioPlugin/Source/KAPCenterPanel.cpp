@@ -22,9 +22,11 @@ KAPCenterPanel::KAPCenterPanel(KandenzeAudioPluginAudioProcessor* inProcessor)
     mEffectsPanel = std::make_unique<KAPEffectsPanel>(inProcessor);
     mEffectsPanel->setTopLeftPosition(0, CENTER_PANEL_MENU_BAR_HEIGHT);
     addAndMakeVisible(*mEffectsPanel);
+
+    mCenterPanelMenuBar->AddEffectsTypeComboBoxListener(&*mEffectsPanel);
 }
 
 KAPCenterPanel::~KAPCenterPanel()
 {
-
+    mCenterPanelMenuBar->RemoveEffectsTypeComboBoxListener(&*mEffectsPanel);
 }
