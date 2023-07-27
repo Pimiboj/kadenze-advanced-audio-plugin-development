@@ -4,6 +4,12 @@
               useAppConfig="0" addUsingNamespaceToJuceHeader="0" displaySplashScreen="1"
               jucerFormatVersion="1">
   <MAINGROUP id="dMZX4P" name="KandenzeAudioPlugin">
+    <GROUP id="{C99B31DC-FA39-30FD-D87B-463A9EB224E6}" name="Managers">
+      <FILE id="oEuThz" name="KAPPresetManager.cpp" compile="1" resource="0"
+            file="Source/KAPPresetManager.cpp"/>
+      <FILE id="cKAhTG" name="KAPPresetManager.h" compile="0" resource="0"
+            file="Source/KAPPresetManager.h"/>
+    </GROUP>
     <GROUP id="{2298F062-0B85-33A8-DF40-1D6D4D91FF57}" name="Parameter Control">
       <FILE id="LSPBpc" name="KAPParameterComboBox.cpp" compile="1" resource="0"
             file="Source/KAPParameterComboBox.cpp"/>
