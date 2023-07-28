@@ -10,6 +10,8 @@
 
 #pragma once
 
+#include "JuceHeader.h"
+
 #define MAIN_PANEL_WIDTH                750
 #define MAIN_PANEL_HEIGHT               300
 
@@ -27,3 +29,15 @@
 
 #define EFFECTS_PANEL_WIDTH             CENTER_PANEL_WIDTH
 #define EFFECTS_PANEL_HEIGHT            (CENTER_PANEL_HEIGHT - CENTER_PANEL_MENU_BAR_HEIGHT)
+
+const juce::Colour KAPColour_1 = juce::Colour(105, 105, 105);
+const juce::Colour KAPColour_2 = juce::Colour(0, 0, 0).withAlpha(0.0f);
+const juce::Colour KAPColour_3 = juce::Colour(0, 0, 0).withAlpha(0.3f);
+const juce::Colour KAPColour_4 = juce::Colour(0, 0, 0).withAlpha(0.6f);
+const juce::Colour KAPColour_5 = juce::Colour(105, 105, 105).withAlpha(0.3f);
+const juce::Colour KAPColour_6 = juce::Colour(0, 0, 0).withAlpha(0.8f);
+const juce::Colour KAPColour_7 = juce::Colour(125, 125, 125);
+
+const juce::Font font_1(juce::String("Helvetica Neue"), 12.00f, juce::Font::bold);
+const juce::Font font_2(juce::String("Helvetica Neue"), 22.00f, juce::Font::bold);
+const juce::Font font_3(juce::String("Helvetica Neue"), 48.00f, juce::Font::bold);

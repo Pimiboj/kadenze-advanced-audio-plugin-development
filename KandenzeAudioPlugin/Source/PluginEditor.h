@@ -12,6 +12,7 @@
 #include "PluginProcessor.h"
 
 #include "KAPMainPanel.h"
+#include "KAPLookAndFeel.h"
 
 //==============================================================================
 /**
@@ -31,6 +32,7 @@ private:
     // access the processor object that created it.
     KandenzeAudioPluginAudioProcessor& audioProcessor;
 
+    std::unique_ptr<KAPLookAndFeel> mLookAndFeel;
     std::unique_ptr<KAPMainPanel> mMainPanel;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (KandenzeAudioPluginAudioProcessorEditor)

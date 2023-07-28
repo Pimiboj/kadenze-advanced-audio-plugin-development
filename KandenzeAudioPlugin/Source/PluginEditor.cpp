@@ -9,6 +9,8 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
+#include "KAPLookAndFeel.h"
+
 //==============================================================================
 KandenzeAudioPluginAudioProcessorEditor::KandenzeAudioPluginAudioProcessorEditor (KandenzeAudioPluginAudioProcessor& p)
     : AudioProcessorEditor (&p), audioProcessor (p)
@@ -19,10 +21,17 @@ KandenzeAudioPluginAudioProcessorEditor::KandenzeAudioPluginAudioProcessorEditor
 
     mMainPanel = std::make_unique<KAPMainPanel>(&audioProcessor);
     addAndMakeVisible(*mMainPanel);
+
+    mLookAndFeel = std::make_unique<KAPLookAndFeel>();
+    setLookAndFeel(mLookAndFeel.get());
+
+    juce::LookAndFeel::setDefaultLookAndFeel(mLookAndFeel.get());
 }
 
 KandenzeAudioPluginAudioProcessorEditor::~KandenzeAudioPluginAudioProcessorEditor()
 {
+    juce::LookAndFeel::setDefaultLookAndFeel(nullptr);
+    setLookAndFeel(nullptr);
 }
 
 //==============================================================================

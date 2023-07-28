@@ -52,6 +52,8 @@
             file="Source/KAPHelperFunctions.h"/>
       <FILE id="JJB4sI" name="KAPInterfaceDefines.h" compile="0" resource="0"
             file="Source/KAPInterfaceDefines.h"/>
+      <FILE id="v4gnTA" name="KAPLookAndFeel.h" compile="0" resource="0"
+            file="Source/KAPLookAndFeel.h"/>
       <FILE id="H3STEa" name="KAPParameters.h" compile="0" resource="0" file="Source/KAPParameters.h"/>
     </GROUP>
     <GROUP id="{C1FA48DC-E011-A316-B368-578520960625}" name="DSP">
