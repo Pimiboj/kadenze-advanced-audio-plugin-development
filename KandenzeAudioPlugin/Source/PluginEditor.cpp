@@ -9,8 +9,6 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
-#include "KAPLookAndFeel.h"
-
 //==============================================================================
 KandenzeAudioPluginAudioProcessorEditor::KandenzeAudioPluginAudioProcessorEditor (KandenzeAudioPluginAudioProcessor& p)
     : AudioProcessorEditor (&p), audioProcessor (p)

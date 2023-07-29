@@ -27,16 +27,20 @@ public:
         setColour(juce::TextButton::buttonColourId, KAPColour_1);
         setColour(juce::TextButton::textColourOnId, KAPColour_1);
         setColour(juce::TextButton::textColourOffId, KAPColour_1);
+
+        mFont1 = std::make_unique<juce::Font>(fontName, font1Size, juce::Font::bold);
+        mFont2 = std::make_unique<juce::Font>(fontName, font2Size, juce::Font::bold);
+        mFont3 = std::make_unique<juce::Font>(fontName, font3Size, juce::Font::bold);
     };
 
-    virtual ~KAPLookAndFeel() {};
+    virtual ~KAPLookAndFeel() { };
 
 
     // BUTTONS
 
     juce::Font getTextButtonFont(juce::TextButton&, int buttonHeight) override
     {
-        return font_1;
+        return *mFont1;
     }
 
     void drawButtonBackground(juce::Graphics& g,
@@ -67,7 +71,7 @@ public:
 
     juce::Font getLabelFont(juce::Label& label) override
     {
-        return font_1;
+        return *mFont1;
     }
 
     void drawPopupMenuItem(juce::Graphics& g, const juce::Rectangle<int>& area,
@@ -83,7 +87,7 @@ public:
         g.fillRect(r.getX(), r.getY(), r.getWidth(), r.getHeight() - 1);
         juce::Colour textColor = isTicked ? KAPColour_7 : KAPColour_1;
         g.setColour(textColor);
-        g.setFont(font_1);
+        g.setFont(*mFont1);
 
         r.setLeft(10);
         r.setY(1);
@@ -114,5 +118,7 @@ public:
     }
 
 private:
-
+    std::unique_ptr<juce::Font> mFont1;
+    std::unique_ptr<juce::Font> mFont2;
+    std::unique_ptr<juce::Font> mFont3;
 };
