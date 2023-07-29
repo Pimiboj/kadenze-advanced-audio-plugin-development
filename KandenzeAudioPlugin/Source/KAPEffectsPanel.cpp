@@ -30,23 +30,28 @@ void KAPEffectsPanel::paint(juce::Graphics& g)
 {
     KAPPanelBase::paint(g);
 
+    juce::String label;
+
     switch (mStyle)
     {
     case kDelay:
-        g.drawFittedText("DELAY", 0, 0, getWidth(), getHeight(), juce::Justification::centred, 1);
+        label = "DELAY";
         break;
 
     case kChorus:
-        g.drawFittedText("CHORUS", 0, 0, getWidth(), getHeight(), juce::Justification::centred, 1);
+        label = "CHORUS";
         break;
 
     default:
-    case kTotalNumStyles:
-        /* SHOULD NOT HAPPEN */
-        g.drawFittedText("NO NO NO", 0, 0, getWidth(), getHeight(), juce::Justification::centred, 1);
         jassertfalse;
-        break;
     }
+
+    KAPLookAndFeel look;
+
+    g.setColour(KAPColour_5);
+    g.setFont(look.GetFont(3));
+
+    g.drawText(label, 0, 0, getWidth(), 80, juce::Justification::centred);
 
     for (int i = 0; i < mSliders.size(); i++)
     {

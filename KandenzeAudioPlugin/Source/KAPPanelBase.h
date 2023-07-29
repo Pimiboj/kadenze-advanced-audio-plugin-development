@@ -20,6 +20,10 @@ public:
     KAPPanelBase(KandenzeAudioPluginAudioProcessor* inProcessor);
     ~KAPPanelBase();
 
+    void mouseEnter(const juce::MouseEvent& event) override;
+
+    void mouseExit(const juce::MouseEvent& event) override;
+
     void paint(juce::Graphics& g) override;
 
 protected:

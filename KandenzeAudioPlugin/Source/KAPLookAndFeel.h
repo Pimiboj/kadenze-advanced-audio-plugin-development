@@ -17,6 +17,9 @@ class KAPLookAndFeel : public juce::LookAndFeel_V4
 public:
     KAPLookAndFeel()
     {
+        // Store Image Assets
+        mSliderImage = juce::ImageCache::getFromMemory(BinaryData::kadenze_knob_png, BinaryData::kadenze_knob_pngSize);
+
         // ComboBox Colors
         setColour(juce::ComboBox::backgroundColourId, KAPColour_3);
         setColour(juce::ComboBox::outlineColourId, KAPColour_2);
@@ -35,6 +38,21 @@ public:
 
     virtual ~KAPLookAndFeel() { };
 
+    juce::Font GetFont(int fontIndex)
+    {
+        if (fontIndex == 1)
+        {
+            return *mFont1;
+        }
+        else if (fontIndex == 2)
+        {
+            return *mFont2;
+        }
+        else
+        {
+            return *mFont3;
+        }
+    }
 
     // BUTTONS
 
@@ -53,11 +71,15 @@ public:
 
         if (shouldDrawButtonAsDown)
         {
-            fillColor = KAPColour_5;
+            fillColor = KAPColour_6;
         }
         else if (shouldDrawButtonAsHighlighted)
         {
             fillColor = KAPColour_3;
+        }
+        else
+        {
+            fillColor = KAPColour_5;
         }
 
         const float cornerSize = 6.0f;
@@ -117,8 +139,36 @@ public:
         g.strokePath(path, juce::PathStrokeType(2.0f));
     }
 
+    // SLIDERS
+
+    void drawRotarySlider(juce::Graphics& g, int x, int y, int width, int height,
+        float sliderPosProportional, float rotaryStartAngle,
+        float rotaryEndAngle, juce::Slider& slider) override
+    {
+        const int numFrames = mSliderImage.getHeight() / mSliderImage.getWidth();
+        const int frameIndex = (int)std::ceil(sliderPosProportional * (numFrames - 1));
+
+        const float radius = juce::jmin(width * 0.5, height * 0.5);
+        const float centerX = x + width * 0.5f;
+        const float centerY = y + height * 0.5f;
+        const float rx = centerX - radius;
+        const float ry = centerY - radius;
+
+        g.drawImage(mSliderImage,
+            rx,
+            ry,
+            2 * radius,
+            2 * radius,
+            0,
+            frameIndex * mSliderImage.getWidth(),
+            mSliderImage.getWidth(),
+            mSliderImage.getWidth());
+    }
+
 private:
     std::unique_ptr<juce::Font> mFont1;
     std::unique_ptr<juce::Font> mFont2;
     std::unique_ptr<juce::Font> mFont3;
+
+    juce::Image mSliderImage;
 };

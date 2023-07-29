@@ -34,6 +34,7 @@ private:
 
     std::unique_ptr<KAPLookAndFeel> mLookAndFeel;
     std::unique_ptr<KAPMainPanel> mMainPanel;
+    juce::Image mBackgroundImage;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (KandenzeAudioPluginAudioProcessorEditor)
 };

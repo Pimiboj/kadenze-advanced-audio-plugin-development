@@ -9,6 +9,7 @@
 */
 
 #include "KAPPanelBase.h"
+#include "KAPInterfaceDefines.h"
 
 KAPPanelBase::KAPPanelBase(KandenzeAudioPluginAudioProcessor* inProcessor)
     : mProcessor(inProcessor)
@@ -21,11 +22,21 @@ KAPPanelBase::~KAPPanelBase()
 
 }
 
+void KAPPanelBase::mouseEnter(const juce::MouseEvent& event)
+{
+    repaint();
+}
+
+void KAPPanelBase::mouseExit(const juce::MouseEvent& event)
+{
+    repaint();
+}
+
 void KAPPanelBase::paint(juce::Graphics& g)
 {
-    g.setColour(juce::Colours::whitesmoke);
-    g.fillAll();
-
-    g.setColour(juce::Colours::black);
-    g.drawRect(0, 0, getWidth(), getHeight(), 2);
+    if (isMouseOver())
+    {
+        //g.setColour(KAPColour_4);
+        //g.fillAll();
+    }
 }

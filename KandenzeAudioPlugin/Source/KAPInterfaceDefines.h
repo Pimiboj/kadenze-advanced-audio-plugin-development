@@ -44,10 +44,6 @@ const juce::Colour KAPColour_5 = juce::Colour(105, 105, 105).withAlpha(0.3f);
 const juce::Colour KAPColour_6 = juce::Colour(0, 0, 0).withAlpha(0.8f);
 const juce::Colour KAPColour_7 = juce::Colour(125, 125, 125);
 
-//const static juce::Font font_1(fontName, 12.00f, juce::Font::bold);
-//const static juce::Font font_2(fontName, 22.00f, juce::Font::bold);
-//const static juce::Font font_3(fontName, 48.00f, juce::Font::bold);
-
 const static float font1Size = 12.0f;
 const static float font2Size = 22.0f;
 const static float font3Size = 48.0f;

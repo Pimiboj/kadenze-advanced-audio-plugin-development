@@ -10,6 +10,8 @@
 
 #include "KAPTopPanel.h"
 
+#include "KAPLookAndFeel.h"
+
 KAPTopPanel::KAPTopPanel(KandenzeAudioPluginAudioProcessor* inProcessor)
     : KAPPanelBase(inProcessor)
 {
@@ -62,7 +64,14 @@ void KAPTopPanel::paint(juce::Graphics& g)
 {
     KAPPanelBase::paint(g);
 
-    g.drawFittedText("KADENZE AUDIO PLUGIN", 0, 0, getWidth() - 10, getHeight(), juce::Justification::centredRight, 1);
+    KAPLookAndFeel look;
+
+    g.setColour(KAPColour_1);
+    g.setFont(look.GetFont(2));
+
+    const int label_w = 220;
+
+    g.drawFittedText("KADENZE AUDIO PLUGIN", TOP_PANEL_WIDTH - label_w - 20, 0, label_w, getHeight(), juce::Justification::centredRight, 1);
 }
 
 void KAPTopPanel::buttonClicked(juce::Button* b)
