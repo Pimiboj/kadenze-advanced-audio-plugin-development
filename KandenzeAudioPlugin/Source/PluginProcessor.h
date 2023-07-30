@@ -58,6 +58,9 @@ public:
     void getStateInformation (juce::MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
 
+    float getInputGainMeterLevel(int inChannel);
+    float getOutputGainMeterLevel(int inChannel);
+
     juce::AudioProcessorValueTreeState Parameters;
 
     KAPPresetManager* getPresetManager()

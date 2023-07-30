@@ -17,6 +17,15 @@ KAPGainPanel::KAPGainPanel(KandenzeAudioPluginAudioProcessor* inProcessor)
     : KAPPanelBase(inProcessor)
 {
     setSize(GAIN_PANEL_WIDTH, GAIN_PANEL_HEIGHT);
+
+    const int meterWidth = 66;
+    mVuMeter = std::make_unique<KAPVuMeter>(inProcessor);
+    mVuMeter->setBounds((getWidth() - meterWidth) * 0.5f,
+        (getHeight() * 0.55f) - meterWidth * 0.5f,
+        meterWidth,
+        getHeight() * 0.45f);
+
+    addAndMakeVisible(*mVuMeter);
 }
 
 KAPGainPanel::~KAPGainPanel()
@@ -44,4 +53,6 @@ void KAPGainPanel::SetParameterID(int inParameterID)
         sliderSize);
 
     addAndMakeVisible(*mSlider);
+
+    mVuMeter->SetParameterID(inParameterID);
 }
